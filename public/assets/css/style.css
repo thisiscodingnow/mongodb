@@ -1,0 +1,15 @@
+
+.imgBox{
+    margin-left:125px
+}
+img{
+    margin-right:30px;
+}
+.deleteNote,.noteTitle{
+    display:inline-block;
+
+}
+
+.noteTitle{
+   margin-right:400px;
+}

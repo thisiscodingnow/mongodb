@@ -1,0 +1,61 @@
+    <nav class="navbar navbar-light bg-light">
+      <a href="/"><button class="btn btn-primary">Back to Home Page</button></a>
+    </nav>
+  <div class="filler"></div>
+
+  {{!-- create article list item --}}
+  {{#each articles}}
+    {{#if saved}}
+      <li class="list-group-item">
+        <a href="{{storyUrl}}" class="pull-right" target="_blank">
+          <div class="imgBox">
+            <img src="{{imgUrl}}" alt="" class="storyImg" height="150">
+          </div>
+        </a>
+        {{#if storyUrl}}
+          <a href="{{storyUrl}}" class="storyLink" target="_blank">
+            <h3 class="storyHeadline">{{headline}}</h3>
+          </a>
+        {{/if}}
+        <h6 class="storyByline">{{byLine}}</h6>
+        <p class="storySummary">{{summary}}</p>
+        <button class="addNote storyButton" data-id="{{_id}}">Add Note</button>
+        <button class="deleteArticle storyButton" data-id="{{_id}}">Delete Article</button>
+      </li>
+    {{/if}}
+  {{/each}}
+
+  {{!-- create notes and display on modal--}}
+  <div id="noteModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title text-center" id="addNoteHeader">Add a note</h4>
+        </div>
+        <div class="modal-body">
+          <input type="text" id="noteTitleEntry" class="form-control" placeholder="Enter Title"><br>
+          <textarea type="text" id="noteBodyEntry" class="form-control" rows="5" placeholder="Enter Body"></textarea>
+          <div id="noteArea"></div>
+        </div>
+        <div class="modal-footer">
+          <h5 class="instructions">Click the note to read it, or X to delete</h5>
+          <button class="btn btn-success" id="saveNote">Save Note</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{!-- display error on modal --}}
+  <div id="error" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <h2>something must go wrong. Please check your inquiry</h2>
+        </div>
+      </div>
+    </div>
+  </div>
